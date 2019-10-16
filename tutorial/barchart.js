@@ -60,9 +60,11 @@ const update = data => {
   // update current shape in hte DOM
   rects
     .attr("width", x.bandwidth)
-    .attr("height", d => graphHeight - y(d.orders)) // data의 orders 값 적용
     .attr("fill", "orange")
     .attr("x", d => x(d.name)) // data index 값 * 70
+    .transition()
+    .duration(500)
+    .attr("height", d => graphHeight - y(d.orders)) // data의 orders 값 적용
     .attr("y", d => y(d.orders));
 
   // 반환되지 못한 나머지 data 가상 DOM으로 생성
@@ -70,10 +72,14 @@ const update = data => {
     .enter()
     .append("rect")
     .attr("width", x.bandwidth)
-    .attr("height", d => graphHeight - y(d.orders))
+    .attr("height", d => 0)
     .attr("fill", "orange")
     .attr("x", d => x(d.name))
-    .attr("y", d => y(d.orders)); // 위에 있는 그래프 뒤집기
+    .attr("y", graphHeight)
+    .transition() // transition 효과 주기
+    .duration(500)
+    .attr("y", d => y(d.orders)) // 위에 있는 그래프 뒤집기
+    .attr("height", d => graphHeight - y(d.orders));
 
   // 축 적용
   xAxisGroup.call(xAxis);
