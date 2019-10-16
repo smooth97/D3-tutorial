@@ -102,6 +102,5 @@ db.collection("dishes").onSnapshot(res => {
         break;
     }
   });
-
-  // updatae(data);
+  update(data);
 });
