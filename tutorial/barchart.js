@@ -45,6 +45,8 @@ xAxisGroup
   .attr("text-anchor", "end")
   .attr("fill", "orange");
 
+const t = d3.transition().duration(1000);
+
 // ***** update function 모듈화 하기 ******
 const update = data => {
   // updating scale domains
@@ -61,23 +63,23 @@ const update = data => {
   rects
     .attr("width", x.bandwidth)
     .attr("fill", "orange")
-    .attr("x", d => x(d.name)) // data index 값 * 70
-    .transition()
-    .duration(500)
-    .attr("height", d => graphHeight - y(d.orders)) // data의 orders 값 적용
-    .attr("y", d => y(d.orders));
+    .attr("x", d => x(d.name)); // data index 값 * 70
+  // .transition(t)
+  // .attr("height", d => graphHeight - y(d.orders)) // data의 orders 값 적용
+  // .attr("y", d => y(d.orders));
 
   // 반환되지 못한 나머지 data 가상 DOM으로 생성
   rects
     .enter()
     .append("rect")
-    .attr("width", x.bandwidth)
-    .attr("height", d => 0)
+    .attr("width", 0)
+    .attr("height", 0)
     .attr("fill", "orange")
     .attr("x", d => x(d.name))
     .attr("y", graphHeight)
-    .transition() // transition 효과 주기
-    .duration(500)
+    .merge(rects) // 병합
+    .transition(t) // transition 효과 주기
+    .attrTween("width", widthTween)
     .attr("y", d => y(d.orders)) // 위에 있는 그래프 뒤집기
     .attr("height", d => graphHeight - y(d.orders));
 
@@ -110,3 +112,13 @@ db.collection("dishes").onSnapshot(res => {
   });
   update(data);
 });
+
+// TWEENS
+
+const widthTween = d => {
+  let i = d3.interpolate(0, x.bandwidth());
+
+  return function(t) {
+    return i(t);
+  };
+};
