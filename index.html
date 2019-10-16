@@ -11,23 +11,30 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="title">SVG</h1>
-    <svg>
-      <rect x="0" y="0" width="100" height="100" rx="10" ry="10" />
-    </svg>
-  </div>
+  <div class="canvas"></div>
 
-  <script src="./lib/app.js"></script>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAbHEKZ_HzgMUGENjPJzYN2ThFhBi389E0",
+      authDomain: "d3-firebase-b0e87.firebaseapp.com",
+      databaseURL: "https://d3-firebase-b0e87.firebaseio.com",
+      projectId: "d3-firebase-b0e87",
+      storageBucket: "d3-firebase-b0e87.appspot.com",
+      messagingSenderId: "978607184216",
+      appId: "1:978607184216:web:3055c2fc68e2b0c933ed2d",
+      measurementId: "G-BJYWZWN5ED"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+  </script>
+  <script src="./tutorial/barchart.js"></script>
 </body>
 
 </html>
-
-
-
-<!-- <div class="legend">
-  <div class="blue bloq">Slaapefficiëntie boven 90%</div>
-  <div class="purple bloq">Slaapefficiëntie tussen 90% en 80%</div>
-  <div class="red bloq">Slaapefficiëntie onder 80%</div>
-</div>
-<div class="graph"></div> -->
