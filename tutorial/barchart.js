@@ -45,7 +45,7 @@ xAxisGroup
   .attr("text-anchor", "end")
   .attr("fill", "orange");
 
-// update function
+// ***** update function 모듈화 하기 ******
 const update = data => {
   // updating scale domains
   y.domain([0, d3.max(data, d => d.orders)]);
@@ -80,15 +80,28 @@ const update = data => {
   yAxisGroup.call(yAxis);
 };
 
-// Firebase Data 적용해서 차트 만들기
-db.collection("dishes")
-  .get()
-  .then(res => {
-    let data = [];
-    res.docs.forEach(doc => {
-      data.push(doc.data());
-    });
-    console.log(data); // firebase data 배열
+let data = [];
 
-    update(data);
+// 실시간 업데이트 함수
+db.collection("dishes").onSnapshot(res => {
+  res.docChanges().forEach(change => {
+    const doc = { ...change.doc.data(), id: change.doc.id };
+
+    switch (change.type) {
+      case "added":
+        data.push(doc);
+        break;
+      case "modified":
+        const index = data.findIndex(item => item.id == doc.id);
+        data[index] = doc;
+        break;
+      case "removed":
+        data = data.filter(item => item.id !== doc.id);
+        break;
+      default:
+        break;
+    }
   });
+
+  // updatae(data);
+});
