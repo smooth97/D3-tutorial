@@ -39,6 +39,19 @@ const legend = d3
   .shapePadding(10)
   .scale(color);
 
+// Tooltip
+const tip = d3
+  .tip()
+  .attr("class", "tip card")
+  .html(d => {
+    let content = `<div class="name">${d.data.name}</div>`;
+    content += `<div class="cost">${d.data.cost}</div>`;
+    content += `<div class="delete">Click slice to delete</div>`;
+    return content;
+  });
+
+graph.call(tip);
+
 // update function
 const update = data => {
   // update color scale domain
@@ -81,6 +94,19 @@ const update = data => {
     .transition()
     .duration(750)
     .attrTween("d", arcTweenEnter);
+
+  // Add events
+  graph
+    .selectAll("path")
+    .on("mouseover", (d, i, n) => {
+      tip.show(d, n[i]); // data 와 this 파라미터
+      handleMouseOver(d, i, n);
+    })
+    .on("mouseout", (d, i, n) => {
+      tip.hide();
+      handleMouseOut(d, i, n);
+    })
+    .on("click", handleClick);
 };
 
 let data = [];
@@ -146,3 +172,25 @@ function arcTweenUpdate(d) {
     return arcPath(i(t));
   };
 }
+
+// event handlers
+const handleMouseOver = (d, i, n) => {
+  d3.select(n[i])
+    .transition("changeSliceFill")
+    .duration(300)
+    .attr("fill", "white");
+};
+
+const handleMouseOut = (d, i, n) => {
+  d3.select(n[i])
+    .transition("changeSliceFill")
+    .duration(300)
+    .attr("fill", color(d.data.name));
+};
+
+const handleClick = d => {
+  const id = d.data.id;
+  db.collection("expenses")
+    .doc(id)
+    .delete();
+};
