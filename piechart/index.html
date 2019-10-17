@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Skills</title>
+    <style>
+        h2,
+        p {
+            margin: 10px 0;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body class="indigo">
+
+    <header class="indigo darken-2 section">
+        <h2 class="center white-text">
+            Skills
+        </h2>
+        <p class="flow-text grey-text center text-lighten-2">
+
+        </p>
+    </header>
+    <div class="container section">
+        <div class="row">
+            <div class="col s12 m6">
+                <form class="card z-depth-0">
+                    <div class="card-content">
+                        <span class="card-title indigo-text">Add Skill :</span>
+                        <div class="input-filed">
+                            <input type="text" id="name" autocomplete="off">
+                            <label for="name">Skill Name</label>
+                        </div>
+                        <div class="input-filed">
+                            <input type="text" id="cost" autocomplete="off">
+                            <label for="name">Skill %</label>
+                        </div>
+                        <div class="input-filed center">
+                            <button class="btn-large pink white-text">Add Skill</button>
+                        </div>
+                        <div class="input-filed center">
+                            <p class="red-text" id="error">text</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col s12 m5 push-m1">
+                <div class="canvas">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAbHEKZ_HzgMUGENjPJzYN2ThFhBi389E0",
+            authDomain: "d3-firebase-b0e87.firebaseapp.com",
+            databaseURL: "https://d3-firebase-b0e87.firebaseio.com",
+            projectId: "d3-firebase-b0e87",
+            storageBucket: "d3-firebase-b0e87.appspot.com",
+            messagingSenderId: "978607184216",
+            appId: "1:978607184216:web:370e32c5e3f3103e33ed2d",
+            measurementId: "G-H0ZMDEHT9X"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        const db = firebase.firestore();
+    </script>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="graph.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
