@@ -45,7 +45,7 @@ const tip = d3
   .attr("class", "tip card")
   .html(d => {
     let content = `<div class="name">${d.data.name}</div>`;
-    content += `<div class="cost">${d.data.cost}</div>`;
+    content += `<div class="cost">${d.data.cost} %</div>`;
     content += `<div class="delete">Click slice to delete</div>`;
     return content;
   });
