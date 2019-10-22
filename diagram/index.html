@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Smooth Corp</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="orange section">
-        <h2 class="white-text center">Smooth Corp</h2>
+      <h2 class="white-text center">Smooth Corp</h2>
     </div>
 
     <div class="grey lighten-3 section grey-text" style="position: relative">
-        <p class="flow-text center">The Number ONE Smooth Company</p>
-        <a href="#modal" class="btn-floating btn-large halfway-fab orange modal-trigger">
-            <i class="material-icons">add</i>
-        </a>
+      <p class="flow-text center">The Number ONE Smooth Stacks</p>
+      <a
+        href="#modal"
+        class="btn-floating btn-large halfway-fab orange modal-trigger"
+      >
+        <i class="material-icons">add</i>
+      </a>
     </div>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <h4 class="orange-text center">Add a New Employee</h4>
-            <form>
-                <div class="input-field">
-                    <input type="text" id="name" placeholder="Employee name" />
-                </div>
-                <div class="input-field">
-                    <input type="text" id="parent" placeholder="Reports to..." />
-                </div>
-                <div class="input-field">
-                    <input type="text" id="department" placeholder="Department" />
-                </div>
-                <div class="input-field center">
-                    <button class="btn orange white-text">Add Employee</button>
-                </div>
-            </form>
-        </div>
+      <div class="modal-content">
+        <h4 class="orange-text center">Add a New Employee</h4>
+        <form>
+          <div class="input-field">
+            <input type="text" id="name" placeholder="Employee name" />
+          </div>
+          <div class="input-field">
+            <input type="text" id="parent" placeholder="Reports to..." />
+          </div>
+          <div class="input-field">
+            <input type="text" id="department" placeholder="Department" />
+          </div>
+          <div class="input-field center">
+            <button class="btn orange white-text">Add Employee</button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="container">
-        <div class="canvas"></div>
+      <div class="canvas"></div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -56,30 +63,29 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
 
     <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAbHEKZ_HzgMUGENjPJzYN2ThFhBi389E0",
-            authDomain: "d3-firebase-b0e87.firebaseapp.com",
-            databaseURL: "https://d3-firebase-b0e87.firebaseio.com",
-            projectId: "d3-firebase-b0e87",
-            storageBucket: "d3-firebase-b0e87.appspot.com",
-            messagingSenderId: "978607184216",
-            appId: "1:978607184216:web:370e32c5e3f3103e33ed2d",
-            measurementId: "G-H0ZMDEHT9X"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAbHEKZ_HzgMUGENjPJzYN2ThFhBi389E0",
+        authDomain: "d3-firebase-b0e87.firebaseapp.com",
+        databaseURL: "https://d3-firebase-b0e87.firebaseio.com",
+        projectId: "d3-firebase-b0e87",
+        storageBucket: "d3-firebase-b0e87.appspot.com",
+        messagingSenderId: "978607184216",
+        appId: "1:978607184216:web:370e32c5e3f3103e33ed2d",
+        measurementId: "G-H0ZMDEHT9X"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
 
-        const db = firebase.firestore();
+      const db = firebase.firestore();
     </script>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
-    <script src="graph.js"></script>
+    <script src="./graph.js"></script>
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>

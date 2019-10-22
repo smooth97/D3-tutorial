@@ -9,9 +9,14 @@ const department = document.querySelector("#department");
 form.addEventListener("submit", e => {
   e.preventDefault();
 
-  db.collection("employees").add({
+  db.collection("stacks").add({
     name: name.value,
     parent: parent.value,
     department: department.value
   });
+
+  let instance = M.Modal.getInstance(modal);
+  instance.close();
+
+  form.reset();
 });
